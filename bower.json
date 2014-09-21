@@ -40,6 +40,12 @@
     "font-awesome": "4",
     "bootstrap": "3",
     "fastclick": "1",
-    "overthrow": "0.7"
+    "overthrow": "0.7",
+      "angular": "latest",
+      "angular-resource": "latest",
+      "angular-cookies": "latest",
+      "angular-mocks": "latest",
+      "angular-route": "latest",
+      "angular-touch": "latest"
   }
 }

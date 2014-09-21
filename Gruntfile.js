@@ -4,15 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
 
-    concurrent: {
-      devel: {
-        tasks: ['connect', 'watch'],
-        options: {
-          limit: 2,
-          logConcurrentOutput: true
-        }
-      }
-    },
+
 
     smq: {
       bootstrap: {
@@ -104,6 +96,29 @@ module.exports = function(grunt) {
         }
       }
     },
+    nodemon: {
+      dev: {
+          script: 'app.js',
+          options: {
+              args: [],
+              ignore: ['node_modules/**'],
+              ext: 'js,html',
+              nodeArgs: ['--debug'],
+              delayTime: 1,
+              cwd: __dirname
+          }
+      }
+    },
+
+      concurrent: {
+          devel: {
+              tasks: ['nodemon', 'watch'],
+              options: {
+                  limit: 2,
+                  logConcurrentOutput: true
+              }
+          }
+      },
 
     'split-hover': {
       all: {
