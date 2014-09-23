@@ -138,6 +138,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks("grunt-nodemon");
   grunt.task.loadTasks("tasks");
 
   grunt.registerTask("build", [ "clean:dev",
