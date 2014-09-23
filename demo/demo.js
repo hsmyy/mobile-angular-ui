@@ -13,6 +13,9 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/overlay',   {templateUrl: "overlay.html"}); 
   $routeProvider.when('/forms',     {templateUrl: "forms.html"});
   $routeProvider.when('/carousel',  {templateUrl: "carousel.html"});
+    $routeProvider.when('/list',  {templateUrl: "list.html", controller: 'ListController'});
+    $routeProvider.when('/create',  {templateUrl: "create.html", controller: 'NewPersonController'});
+    $routeProvider.when('/set',  {templateUrl: "set.html"});
 });
 
 app.service('analytics', [
@@ -127,4 +130,52 @@ app.controller('MainController', function($rootScope, $scope, analytics){
     { name: "Ebony Rice", online: false }
   ];
 
+});
+
+app.controller('ListController', function($rootScope, $scope, $http){
+    $http.get('/person/3').success(function(data){
+        $scope.friends = data;
+        console.log(data);
+    });
+
+    $scope.search = '';
+    $scope.page = 1;
+    $scope.cur = 0;
+
+    $scope.create = {};
+    $scope.create.key = '';
+    $scope.create.val = '';
+
+    $scope.choose = function(idx){
+        $scope.page = 2;
+        $scope.cur = idx;
+    };
+
+    $scope.back = function(){
+        $scope.page = 1;
+    };
+
+    $scope.create = function(){
+        $http.post('/person/3/friends/'+$scope.friends.persons[$scope.cur].name+'/'+$scope.create.key+'/'+$scope.create.val).success(function(data){
+            $scope.friends.persons[$scope.cur].data.push({
+                key : $scope.create.key,
+                value : $scope.create.val
+            });
+        });
+    };
+});
+
+app.controller('NewPersonController', function($rootScope, $scope, $http){
+    $scope.person = {};
+    $scope.person.name = '';
+    $scope.success = false;
+    $scope.create = function(){
+        if($scope.person.name.trim().length > 0){
+            $http.post('/person/3/friends/' + $scope.person.name.trim()).success(function(data){
+                $scope.success = true;
+            }).error(function(err){
+                $scope.success = false;
+            });
+        }
+    }
 });

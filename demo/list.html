@@ -1,0 +1,81 @@
+<div ng-class="ListController">
+    <div class="scrollable">
+        <div class="scrollable-content">
+            <div ng-if="page == 1">
+                <input type="search" class="form-control app-search" placeholder="Search.." />
+                <div class="list-group">
+                    <a ng-repeat="item in friends.persons" class="list-group-item" ng-click="choose($index)">
+                        {{ item.name }} <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div ng-if="page == 2">
+                <div class="section container-fluid">
+                    <h3>{{friends.persons[cur].name}}</h3>
+                    <ul class="nav nav-tabs">
+                        <li><a href="#Tab1" toggle="on" parent-active-class="active">基本信息</a></li>
+                        <li><a href="#Tab2" toggle="on" parent-active-class="active">分析信息</a></li>
+                        <li><a href="#Tab3" toggle="on" parent-active-class="active">Tab 3</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane"
+                             toggleable
+                             active-class="active"
+                             default="active"
+                             id="Tab1"
+                             exclusion-group="myTabs">
+
+                            <h3 class="page-header">基本信息</h3>
+                            <div class="list-group">
+                                <div ng-repeat="info in friends.persons[cur].data">
+                                    {{info.key}} - {{info.value}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane"
+                             toggleable
+                             active-class="active"
+                             default="active"
+                             id="Tab2"
+                             exclusion-group="myTabs">
+
+                            <h3 class="page-header">新建信息</h3>
+                            <form action="" id="">
+                                <div bs-panel title="">
+                                    <input
+                                            bs-form-control
+
+                                            type="text"
+                                            ng-model="create.key"
+                                            label="Key"
+                                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                                            class="col-xs-9 col-sm-10 col-lg-11"
+                                            placeholder="Key"
+                                            />
+                                    <input
+                                            bs-form-control
+
+                                            type="text"
+                                            ng-model="create.val"
+                                            label="Value"
+                                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                                            class="col-xs-9 col-sm-10 col-lg-11"
+                                            placeholder="Value"
+                                            />
+                                </div>
+                                <div bs-panel class="form-actions">
+                                    <div content-for="navbarAction" duplicate>
+                                        <button class="btn btn-primary" ng-click="create()">
+                                            创建
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" ng-click="back()">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

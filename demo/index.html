@@ -11,7 +11,7 @@
   <head>
     <meta charset="utf-8" />
     <!--<base href="/demo/" />-->
-    <title>Mobile Angular UI Examples</title>
+    <title>我的朋友</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
@@ -32,7 +32,7 @@
     <!-- Sidebars -->
     <div ng-include="'sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
 
-    <div ng-include="'sidebarRight.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></div>
+    <!--<div ng-include="'sidebarRight.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></div>-->
 
     <div class="app">
 
@@ -40,18 +40,23 @@
 
       <div class="navbar navbar-app navbar-absolute-top">
         <div class="navbar-brand navbar-brand-center" yield-to="title">
-          <span>Mobile Angular UI</span>
+          <span>我的朋友</span>
         </div>
         <div class="btn-group pull-left">
           <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
             <i class="fa fa-bars"></i> Menu
           </div>
         </div>
-        <div class="btn-group pull-right" yield-to="navbarAction">
+        <!--<div class="btn-group pull-right" yield-to="navbarAction">
           <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
             <i class="fa fa-comment"></i> Chat
           </div>
-        </div>
+        </div>-->
+          <div class="btn-group pull-right" yield-to="navbarAction">
+              <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
+                  <i class="fa fa-comment"></i> 返回
+              </div>
+          </div>
       </div>
 
       <div class="navbar navbar-app navbar-absolute-bottom">
