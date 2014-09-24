@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      dev: ["tmp", "dist", "demo/assets"]
+      dev: ["tmp", "dist", "public/assets"]
     },
 
     copy: {
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         options: {
           hostname: '0.0.0.0',
           port: 3000,
-          base: ['.', 'demo'],
+          base: ['.', 'public'],
           keepalive: true
         }
       }
